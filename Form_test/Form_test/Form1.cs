@@ -16,27 +16,34 @@ namespace Form_test
         {
             InitializeComponent();
             for (int i = 0; i < 6; i++)//四回繰り返す
-            for (int j = 0; j < 4; j++)
-            {    //インスタンスの設定
-                Test_Buttoncs testButton = new Test_Buttoncs();
-                //ボタンの位置を設定
+                for (int j = 0; j < 4; j++)
+                {    //インスタンスの設定
+                    Test_Buttoncs testButton = new Test_Buttoncs();
+                    //ボタンの位置を設定
 
+                    testButton.Location = new Point(50 * i, 50 * j);
 
-                testButton.Location = new Point(50 * i, 50*j);
+                    //ボタンの大きさを設定
+                    testButton.Size = new Size(50, 50);
 
-                //ボタンの大きさを設定
-                testButton.Size = new Size(50, 50);
-                //ボタン内のテキスト            
-                testButton.Text = "ぼたん２";
+                    //ボタン内のテキストを設定            
+                    testButton.Text = "ぼたん２";
 
-                //コントロール内にボタンを設定
-                Controls.Add(testButton);
-            }
+                    testButton.MouseHover += hogehogwClick;
+
+                    //コントロール内にボタンを設定
+                    Controls.Add(testButton);
+                }
         }
-                private void button1_Click(object sender, EventArgs e)
+        private void hogehogwClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("小泉進次郎");
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("高市早苗");
         }
-       
+
     }
 }

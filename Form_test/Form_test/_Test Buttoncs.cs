@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Form_test
 {
-    internal class Test_Buttoncs: Button
+    internal class Test_Buttoncs : Button
     {
 
     }
