@@ -15,25 +15,17 @@ namespace Form_test
         public Form1()
         {
             InitializeComponent();
-            for (int i = 0; i < 6; i++)//四回繰り返す
-                for (int j = 0; j < 4; j++)
+            for (int i = 0; i < 3; i++)//6回繰り返す
+            {
+                for (int j = 0; j < 3; j++)//４回繰り返す
                 {    //インスタンスの設定
-                    Test_Buttoncs testButton = new Test_Buttoncs();
-                    //ボタンの位置を設定
-
-                    testButton.Location = new Point(50 * i, 50 * j);
-
-                    //ボタンの大きさを設定
-                    testButton.Size = new Size(50, 50);
-
-                    //ボタン内のテキストを設定            
-                    testButton.Text = "ぼたん２";
-
-                    testButton.MouseHover += hogehogwClick;
+                    Test_Buttoncs testButton = new Test_Buttoncs(new Point(50 * i, 50 * j), new Size(50, 50), "a");                
 
                     //コントロール内にボタンを設定
                     Controls.Add(testButton);
+
                 }
+            }
         }
         private void hogehogwClick(object sender, EventArgs e)
         {
