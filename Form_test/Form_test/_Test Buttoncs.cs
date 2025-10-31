@@ -10,18 +10,44 @@ namespace Form_test
 {
     internal class Test_Buttoncs : Button
     {
+
+        private Color _onCoLOr = Color.LightGreen;
+        private Color _ofCoLOr = Color.LightGray;
+        private bool  _eneble;
+
+        public void SetEnable(bool on)
+        {
+            _eneble = on;
+
+            if (on)
+            {
+                BackColor = _onCoLOr;
+            }
+            else
+            {
+                BackColor = _ofCoLOr;   
+            }
+              
+        }
+
+
+
         public Test_Buttoncs(Point potision, Size size,string text)
         {
             Location = potision;
             Size = size;
             Text = text;
 
+            SetEnable(false);
+
+
+
             Click += hogehogwClick;
 
         }
         private void hogehogwClick(object sender, EventArgs e)
         {
-            MessageBox.Show("小泉進次郎");
+            SetEnable(!_eneble);
         }
 
     }
