@@ -18,10 +18,12 @@ namespace Form_test
 
         const int BOARD_SIZE_X = 3;
         const int BOARD_SIZE_Y = 3;
+        private Test_Buttoncs[,] _buttonArray;
 
         public Form1()
         {
             InitializeComponent();
+            _buttonArray = new Test_Buttoncs[BOARD_SIZE_Y, BOARD_SIZE_X];
 
             for (int i = 0; i < BOARD_SIZE_X; i++)
             {
@@ -29,13 +31,21 @@ namespace Form_test
                 {    //インスタンスの設定
                     Test_Buttoncs testButton =
                         new Test_Buttoncs(new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j)
-                                        , new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "a");
+                                        , new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "");
+
+                   //配列にボタンも参照を追加
+                    _buttonArray[j, i] = testButton;
+
+
+
 
                     //コントロール内にボタンを設定
                     Controls.Add(testButton);
 
                 }
             }
+
+            _buttonArray[2, 2].SetEnable(true);
         }
         private void hogehogwClick(object sender, EventArgs e)
         {
