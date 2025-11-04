@@ -8,12 +8,13 @@ using System.Windows.Forms;
 
 namespace Form_test
 {
-    internal class Test_Buttoncs : Button
+    public class Test_Buttoncs : Button
     {
 
         private Color _onCoLOr = Color.LightGreen;
         private Color _ofCoLOr = Color.LightGray;
-        private bool  _eneble;
+        private bool _eneble;
+        private Form1 _form1;
 
         public void SetEnable(bool on)
         {
@@ -25,15 +26,18 @@ namespace Form_test
             }
             else
             {
-                BackColor = _ofCoLOr;   
+                BackColor = _ofCoLOr;
             }
-              
+
         }
 
 
 
-        public Test_Buttoncs(Point potision, Size size,string text)
+        public Test_Buttoncs(Form1 form1, Point potision, Size size, string text)
         {
+            //Form1の参照を補完
+            _form1 = form1;
+            //ボタンの位置を設定
             Location = potision;
             Size = size;
             Text = text;
@@ -47,7 +51,8 @@ namespace Form_test
         }
         private void hogehogwClick(object sender, EventArgs e)
         {
-            SetEnable(!_eneble);
+            _form1.GetTestButton(1, 1).SetEnable(true);
+
         }
 
     }

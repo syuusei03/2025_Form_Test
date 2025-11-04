@@ -17,6 +17,7 @@ namespace Form_test
         const int BUTTON_SIZE_Y = 100;
 
         const int BOARD_SIZE_X = 3;
+
         const int BOARD_SIZE_Y = 3;
         private Test_Buttoncs[,] _buttonArray;
 
@@ -28,12 +29,13 @@ namespace Form_test
             for (int i = 0; i < BOARD_SIZE_X; i++)
             {
                 for (int j = 0; j < BOARD_SIZE_Y; j++)
-                {    //インスタンスの設定
+                {    //インスタンスの生成
                     Test_Buttoncs testButton =
-                        new Test_Buttoncs(new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j)
-                                        , new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "");
+                        new Test_Buttoncs(this,
+                        new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j),
+                        new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "");
 
-                   //配列にボタンも参照を追加
+                    //配列にボタンも参照を追加
                     _buttonArray[j, i] = testButton;
 
 
@@ -45,8 +47,14 @@ namespace Form_test
                 }
             }
 
-            _buttonArray[2, 2].SetEnable(true);
+            GetTestButton(0, 0).SetEnable(true);
         }
+
+        public Test_Buttoncs GetTestButton(int x, int y)
+        {
+            return _buttonArray[y, x];
+        }
+
         private void hogehogwClick(object sender, EventArgs e)
         {
             MessageBox.Show("小泉進次郎");
