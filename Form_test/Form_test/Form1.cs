@@ -45,6 +45,7 @@ namespace Form_test
 
                     //コントロール内にボタンを設定
                     Controls.Add(testButton);
+                  
 
                 }
             }

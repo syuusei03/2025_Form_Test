@@ -81,6 +81,7 @@ namespace Form_test
             _form1.GetTestButton(_x, _y + 1)?.Toggle();
             _form1.GetTestButton(_x, _y - 1)?.Toggle();
 
+
             //かっこいい書き方
             //for (int i = 0; i < _toggleDate.Length; i++)
             //{
