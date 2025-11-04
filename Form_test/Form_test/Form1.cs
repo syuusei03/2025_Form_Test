@@ -31,7 +31,9 @@ namespace Form_test
                 for (int j = 0; j < BOARD_SIZE_Y; j++)
                 {    //インスタンスの生成
                     Test_Buttoncs testButton =
-                        new Test_Buttoncs(this,
+                        new Test_Buttoncs(
+                        this
+                        ,i,j,
                         new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j),
                         new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "");
 
@@ -47,11 +49,16 @@ namespace Form_test
                 }
             }
 
-            GetTestButton(0, 0).SetEnable(true);
+            
         }
 
         public Test_Buttoncs GetTestButton(int x, int y)
         {
+            //配列外参照対策
+
+            if (x < 0 || x > BOARD_SIZE_X) return null;
+            if (y < 0 || y > BOARD_SIZE_Y) return null;
+
             return _buttonArray[y, x];
         }
 
