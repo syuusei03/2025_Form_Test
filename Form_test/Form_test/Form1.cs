@@ -56,8 +56,8 @@ namespace Form_test
         {
             //配列外参照対策
 
-            if (x < 0 || x > BOARD_SIZE_X) return null;
-            if (y < 0 || y > BOARD_SIZE_Y) return null;
+            if (x < 0 || x >= BOARD_SIZE_X) return null;
+            if (y < 0 || y >=BOARD_SIZE_Y) return null;
 
             return _buttonArray[y, x];
         }
