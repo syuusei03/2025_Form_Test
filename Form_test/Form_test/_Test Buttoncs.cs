@@ -10,7 +10,10 @@ namespace Form_test
 {
     public class Test_Buttoncs : Button
     {
-
+        //ランダム関数
+        private static Random random = new Random();
+        //理論値を格納する変数
+        private bool Boolrandom;        
         private Color _onCoLOr = Color.LightGreen;
         private Color _ofCoLOr = Color.LightGray;
         private bool _eneble;
@@ -43,6 +46,9 @@ namespace Form_test
 
         public Test_Buttoncs(Form1 form1, int x, int y, Point potision, Size size, string text)
         {
+            // 0 =true 1=farse.
+            Boolrandom = random.Next(0, 2) == 0;
+
             //Form1の参照を補完
 
             _form1 = form1;
@@ -65,7 +71,7 @@ namespace Form_test
 
             Text = text;
 
-            SetEnable(false);
+            SetEnable(Boolrandom);
 
 
 
@@ -80,31 +86,40 @@ namespace Form_test
             _form1.GetTestButton(_x - 1, _y)?.Toggle();
             _form1.GetTestButton(_x, _y + 1)?.Toggle();
             _form1.GetTestButton(_x, _y - 1)?.Toggle();
+            //判定の基準を保管(0.0)
+            bool kijun = _form1.GetTestButton(0, 0)._eneble;
+            //全部そろっているか状態を保存.
+            bool hozon = true;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (kijun !=_form1.GetTestButton(i, j)._eneble)
+                    {
+                        hozon = !hozon;
+                        break; 
+                    }
+                }
+                if (!hozon)
+                {
+                    break;
+                }
+            }
+            if (hozon)
+            {
+                MessageBox.Show("おめでとう");
+                Application.Exit();//閉じr
+            }
+            
 
 
-            //かっこいい書き方
-            //for (int i = 0; i < _toggleDate.Length; i++)
-            //{
-            //    var data = _toggleDate[i];
-            //    var button = _form1.GetTestButton(_x + data[0], _y + data[1]);
-            //
-            //    if (button != null)
-            //    {
-            //        button.Toggle();
-            //    }
-            //}
+
             //関数を全部変えたいときはｒ二回
 
         }
-       //
-       //private int[][] _toggleDate =
-       //{
-       //    new int[]{0,0 },
-       //    new int[]{1,0 },
-       //    new int[]{-1,0},
-       //    new int[]{0,1},
-       //
-       //};
-       //
+        
+         
+     
     }
 }
