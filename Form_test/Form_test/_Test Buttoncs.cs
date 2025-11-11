@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Hosting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -90,27 +91,55 @@ namespace Form_test
             bool kijun = _form1.GetTestButton(0, 0)._eneble;
             //全部そろっているか状態を保存.
             bool hozon = true;
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
+            
+            
+                for (int i = 0; i < 3; i++)
                 {
-                    if (kijun !=_form1.GetTestButton(i, j)._eneble)
+                    for (int j = 0; j < 3; j++)
                     {
-                        hozon = !hozon;
-                        break; 
+                        if (kijun != _form1.GetTestButton(i, j)._eneble)
+                        {
+                            hozon = !hozon;
+                            break;
+                        }
+                    }
+                    if (!hozon)
+                    {
+                        break;
                     }
                 }
-                if (!hozon)
+                if (hozon)
                 {
-                    break;
+                DialogResult result= MessageBox.Show("コンティニュー","",MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+
+                    
+                    for (int k = 0; k < 3; k++)
+                    {
+                        for(int f = 0;f < 3; f++)
+                        {
+
+
+                            _form1.GetTestButton(k, f).SetEnable(random.Next(0, 2) == 0);
+
+
+
+                        }
+
+                    }
+                        
+
+                    
+
                 }
-            }
-            if (hozon)
-            {
-                MessageBox.Show("おめでとう");
-                Application.Exit();//閉じr
-            }
+                else
+                    Application.Exit();
+
+
+                }
+            
+          //
             
 
 
